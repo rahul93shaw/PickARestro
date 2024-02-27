@@ -1,8 +1,7 @@
-Bite Buddies - API
-A backend application for lunch planner.
+PickARestro
 
 Overview
-The BiteBuddies project is a Java-based application developed using the Spring Boot framework. It provides a foundation for building a web application with data persistence using Spring Data JPA, Flyway for database migration, and includes tools like Lombok and MapStruct for simplified development.
+PickARestro project is a Java-based application developed using the Spring Boot framework. The application is built using Spring Boot, JPA and Mysql.
 
 Prerequisites
 Java 17
@@ -24,7 +23,7 @@ The main configuration file is application.yml in the src/main/resources directo
 
 
 Endpoints
-Endpoint: /login
+Endpoint: http://localhost:8080/pickarestro/login/
 Method Type: POST
 Request Body: {
     "name": "Md Jin1",
