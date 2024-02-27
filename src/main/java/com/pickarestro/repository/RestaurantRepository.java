@@ -1,7 +1,8 @@
 package com.pickarestro.repository;
 
-import com.pickarestro.dao.RestaurantEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RestaurantRepository extends JpaRepository<RestaurantEntity, Long> {
+import com.pickarestro.model.Restaurant;
+
+public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 }

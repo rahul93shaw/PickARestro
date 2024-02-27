@@ -1,43 +1,42 @@
 package com.pickarestro.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RestaurantDto {
-    public Long getId() {
-		return id;
+public class RestaurantDto extends BaseDto{
+    
+    private Long restaurantId;
+    
+    private String name;
+    
+    private String address;
+
+	public Long getRestaurantId() {
+		return restaurantId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setRestaurantId(Long restaurantId) {
+		this.restaurantId = restaurantId;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getLocation() {
-		return location;
+
+	public String getAddress() {
+		return address;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getImageUrl() {
-		return imageUrl;
+
+	@Override
+	public String toString() {
+		return "RestaurantDto [restaurantId=" + restaurantId + ", name=" + name + ", address=" + address + "]";
 	}
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-	public String getWebsiteUrl() {
-		return websiteUrl;
-	}
-	public void setWebsiteUrl(String websiteUrl) {
-		this.websiteUrl = websiteUrl;
-	}
-	private Long id;
-    private String name;
-    private String location;
-    private String imageUrl;
-    private String websiteUrl;
 }

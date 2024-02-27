@@ -1,11 +1,9 @@
 package com.pickarestro.repository;
 
-import com.pickarestro.dao.SessionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.pickarestro.model.Session;
 
-public interface SessionRepository extends JpaRepository<SessionEntity, Long> {
+public interface SessionRepository extends JpaRepository<Session, Long> {
 
-    List<SessionEntity> findByActive(boolean isActive);
 }
