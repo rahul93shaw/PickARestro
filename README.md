@@ -23,7 +23,8 @@ The main configuration file is application.yml in the src/main/resources directo
 
 
 Endpoints
-Endpoint: http://localhost:8080/pickarestro/login/
+Endpoint: 
+LOGIN/SIGNUP : http://localhost:8080/pickarestro/login/
 Method Type: POST
 Request Body: {
     "name": "Md Jin1",
@@ -34,6 +35,28 @@ Response: {
     "status": "failure",
     "message": "Username already exists. Please try login with different username.",
     "body": null
+}
+
+CREATE NEW SESSION : http://localhost:8080/pickarestro/main/createSession
+Method Type: POST
+Request Body: {
+    "sessionId": 0,
+    "sessionType": "Office party",
+    "sessionDesc" : "office party",
+    "host" : "john123",
+    "endDatetime": null,
+    "startDatetime": 20240227231308
+}
+Response: {
+    "status": "success",
+    "message": "",
+    "body": {
+        "sessionId": 1,
+        "sessionType": "Office party",
+        "sessionDesc": "office party",
+        "startDatetime": 20240227231308,
+        "host": "john123"
+    }
 }
 
 Note:- Other API are commented due to shortage of time. I ran out of time because of PROD activities in my current company.
