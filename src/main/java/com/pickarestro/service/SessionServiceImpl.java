@@ -1,5 +1,7 @@
 package com.pickarestro.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,28 @@ public class SessionServiceImpl implements SessionService {
 			}
 		}
 		return sessionDto;
+	}
+
+	@Override
+	public List<SessionDto> allActiveSessionsByUser(String username) {
+		List<Session> sessions = sessionRepository.findByCreatedBy(username);
+		if(!Objects.isNull(sessions)) {
+			List<SessionDto> sessionDtos = new ArrayList<>();
+			sessions.forEach(ses -> {
+				SessionDto sesDto = new SessionDto();
+				if(Objects.isNull(ses.getEndDatetime())) {
+					sesDto.setHost(username);
+					sesDto.setSessionDesc(ses.getSessionDesc());
+					sesDto.setSessionType(ses.getSessionType());
+					sesDto.setSessionId(ses.getSessionId());
+					sessionDtos.add(sesDto);
+				}
+				
+			});
+			return sessionDtos;
+		} else {
+			return null;
+		}
 	}
 
 }

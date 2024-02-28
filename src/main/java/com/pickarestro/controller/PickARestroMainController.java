@@ -76,7 +76,7 @@ public class PickARestroMainController {
 			result.setMessage("");
 			result.setStatus("failure");
 			result.setBody(null);
-			LOGGER.error("error at PickARestroMainController | createSession :" + e.getMessage());
+			LOGGER.error("error at PickARestroMainController | retrieveRestaurantList :" + e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(result);
 		}
 	}
@@ -94,7 +94,26 @@ public class PickARestroMainController {
 			result.setMessage("");
 			result.setStatus("failure");
 			result.setBody(null);
-			LOGGER.error("error at PickARestroMainController | createSession :" + e.getMessage());
+			LOGGER.error("error at PickARestroMainController | retrieveUsersList :" + e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(result);
+		}
+	}
+	
+	@GetMapping("/activeSessionByUser")
+	public ResponseEntity<Object> activeSessionByUser(@RequestParam("username") String username) {
+		ResponseBody result = new ResponseBody();
+		try {
+			
+			List<SessionDto> sessionDtos = sessionService.allActiveSessionsByUser(username);
+			result.setMessage("");
+			result.setStatus("success");
+			result.setBody(sessionDtos);
+			return ResponseEntity.status(HttpStatus.OK).body(result);
+		} catch(Exception e) {
+			result.setMessage("");
+			result.setStatus("failure");
+			result.setBody(null);
+			LOGGER.error("error at PickARestroMainController | sessionDtos :" + e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(result);
 		}
 	}
