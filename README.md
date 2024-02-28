@@ -180,5 +180,30 @@ Response: {
     ]
 }
 
+GET ALL ACTIVE SESSIONS BY USER : http://localhost:8080/pickarestro/main/activeSessionByUser?username=john123
+Method Type: GET
+Request Body: {
+    
+}
+Response: {
+    "status": "success",
+    "message": "",
+    "body": [
+        {
+            "sessionId": 1,
+            "sessionType": "Office party",
+            "sessionDesc": "office party",
+            "host": "john123"
+        },
+        {
+            "sessionId": 2,
+            "sessionType": "Team Lunch",
+            "sessionDesc": "",
+            "host": "john123"
+        }
+    ]
+}
+
+
 
 Note:- Other API are commented due to shortage of time. I ran out of time because of PROD activities in my current company.
