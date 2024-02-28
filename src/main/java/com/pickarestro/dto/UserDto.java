@@ -1,6 +1,6 @@
 package com.pickarestro.dto;
 
-public class SignupDto {
+public class UserDto {
 
 	private String name;
     

@@ -1,6 +1,8 @@
 package com.pickarestro.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pickarestro.dto.LoginDto;
+import com.pickarestro.dto.UserDto;
 import com.pickarestro.model.User;
 import com.pickarestro.repository.UserRepository;
 
@@ -46,6 +49,25 @@ public class UserServiceImpl implements UserService {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public List<UserDto> retrieveUsersList(String excUsername) {
+		List<User> users = userRepository.findAll();
+		if(!Objects.isNull(users)) {
+			List<UserDto> userDtos = new ArrayList<>();
+			users.forEach(us -> {
+				if(!us.getUsername().equalsIgnoreCase(excUsername)) {
+					UserDto userDto = new UserDto();
+					userDto.setName(us.getName());
+					userDto.setUsername(us.getUsername());
+					userDtos.add(userDto);
+				}
+			});
+			return userDtos;
+		} else {
+			return null;
+		}
 	}
 
 }
