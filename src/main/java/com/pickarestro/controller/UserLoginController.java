@@ -2,6 +2,8 @@ package com.pickarestro.controller;
 
 import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,18 @@ import com.pickarestro.util.ResponseBody;
 @RequestMapping("/login")
 public class UserLoginController {
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserLoginController.class);
+	
 	@Autowired
     private UserService userService;
 	
 	@PostMapping("/")
     public ResponseEntity<Object> login(@RequestBody LoginDto loginUser) {
+		try {
+			
+		} catch(Exception e) {
+			
+		}
         User user = userService.login(loginUser);
         ResponseBody result = new ResponseBody();
         if(Objects.isNull(user)) {
@@ -46,15 +55,5 @@ public class UserLoginController {
         			.body(result);
         }
     }
-
-//    @PostMapping("/sign-up")
-//    public UserDto signUp(@RequestBody UserDto loginUser) {
-//        return userService.signUp(loginUser);
-//    }
-//
-//    @GetMapping("/all")
-//    public List<UserDto> getAllUsers() {
-//        return userService.getAllUsers();
-//    }
 
 }
